@@ -30,7 +30,6 @@
       padding: 16px;
     }
 
-    /* FULL-SCREEN CONFETTI CANVAS */
     #confettiCanvas {
       position: fixed;
       inset: 0;
@@ -91,6 +90,7 @@
       background: var(--yes);
       color: #fff;
     }
+
     #yesBtn:hover { background: var(--yesHover); }
 
     #noBtn {
@@ -171,25 +171,24 @@
             fill="#ff7aa2"/>
     </svg>
 
-    <h1>My Lamsous, will you be my Valentine?</h1>
+    <h1 id="question">My Lamsous, will you be my Valentine?</h1>
 
     <section class="button-zone" id="zone">
       <button id="yesBtn">Yes</button>
       <button id="noBtn">No</button>
     </section>
 
-    <!-- HINT -->
-    <div class="hint" id="hint">“No” Naawed ntalaalk nabtet jdoud f wajheek  😈</div>
+    <div class="hint" id="hint">“No” Naawed ntalaalk nabtet jdoud f wajheek 😈</div>
 
     <section class="result" id="result">
-      <h2>    🎉 YAY! 🎉</h2>
-      <h2> The best decision ever </h2>
+      
+      <h2>The best decision ever ❤️</h2>
       <img
         class="fireworks"
         src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif"
         alt="Fireworks"
       />
-       <h2>I love You My Chubby Girl 🎉</h2>
+      <h2>I love You My Chubby Girl ❤️</h2>
     </section>
   </main>
 
@@ -199,8 +198,8 @@
     const noBtn = document.getElementById("noBtn");
     const result = document.getElementById("result");
     const hint = document.getElementById("hint");
+    const question = document.getElementById("question");
 
-    /* ---------- CONFETTI ---------- */
     const confettiCanvas = document.getElementById("confettiCanvas");
 
     function resizeConfettiCanvas() {
@@ -222,7 +221,6 @@
 
     function fullScreenConfetti() {
       const end = Date.now() + 1600;
-
       (function frame() {
         confettiInstance({
           particleCount: 12,
@@ -245,14 +243,12 @@
       }, 300);
     }
 
-    /* ---------- YES BUTTON GROWS ---------- */
     let yesScale = 1;
     function growYes() {
       yesScale = Math.min(2.2, yesScale + 0.1);
       yesBtn.style.transform = `translateY(-50%) scale(${yesScale})`;
     }
 
-    /* ---------- NO BUTTON RUNS AWAY ---------- */
     function clamp(n, min, max) {
       return Math.max(min, Math.min(max, n));
     }
@@ -291,10 +287,10 @@
 
     noBtn.addEventListener("click", e => e.preventDefault());
 
-    /* ---------- YES CLICK ---------- */
     yesBtn.addEventListener("click", () => {
       zone.style.display = "none";
-      hint.style.display = "none";     // HIDE THE HINT
+      hint.style.display = "none";
+      question.style.display = "none";
       result.style.display = "block";
       resizeConfettiCanvas();
       fullScreenConfetti();
@@ -302,8 +298,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
